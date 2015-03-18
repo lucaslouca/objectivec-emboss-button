@@ -88,7 +88,6 @@
     CGColorSpaceRelease(myColorspace);
     CGContextRestoreGState(context);
     
-    
     /* Draw the button */
     // Drop shadow
     CGRect buttonShadowRect = CGRectInset(self.bounds, buttonInset, buttonInset);
@@ -99,7 +98,6 @@
     CGContextAddPath(context, buttonShadowClipPath.CGPath);
     CGContextFillPath(context);
     CGContextRestoreGState(context);
-    
     
     // Draw the gradient Button stroke
     CGRect buttonStrokeRect = CGRectInset(self.bounds, buttonInset, buttonInset);
@@ -121,8 +119,7 @@
     CGColorSpaceRelease(buttonStrokeColorspace);
     CGContextRestoreGState(context);
 
-    
-    // Draw the actual button
+    // Draw the actual pushable part
     CGRect buttonRect = CGRectInset(self.bounds, buttonInset + buttonStrokeWidth, buttonInset + buttonStrokeWidth);
     UIBezierPath *buttonClipPath = [UIBezierPath bezierPathWithRoundedRect:buttonRect cornerRadius:buttonCornerRadius];
     CGGradientRef buttonGradient;
@@ -138,7 +135,6 @@
             42/255.0, 42/255.0, 42/255.0, 1.0 }; // End color
         buttonGradient = CGGradientCreateWithColorComponents(buttonColorspace, buttonGradientComponents, buttonGradientLocations, 2);
     }
-    
     
     CGPoint buttonGradientStartPoint = CGPointMake(CGRectGetMidX(buttonRect), CGRectGetMinY(buttonRect));
     CGPoint buttonGradientEndPoint = CGPointMake(CGRectGetMidX(buttonRect), CGRectGetMaxY(buttonRect));
